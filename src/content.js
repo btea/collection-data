@@ -1,4 +1,31 @@
 // import './css/content.css';
+import { proxy } from 'ajax-hook';
+proxy({
+    onError: (err, handler) => {
+        console.log(err);
+    },
+    onResponse: (response, handler) => {
+        console.log(response.response);
+        handler.next(response);
+    }
+});
+console.clear();
+
+// let script = document.createElement('script');
+// script.src = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js';
+// document.body.appendChild(script);
+// console.clear();
+// setTimeout(() => {
+//     var ah = window.ah;
+//     if (ah) {
+//         ah.proxy({
+//             onResponse: (response, handler) => {
+//                 console.log(response.response);
+//                 handler.next(response);
+//             }
+//         });
+//     }
+// }, 3000);
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request);
     if (request.value) {
@@ -35,12 +62,12 @@ const two = {
 console.log(
     '%c link %c start ',
     Object.entries(one)
-        .map(attr => {
+        .map((attr) => {
             return attr[0] + ':' + attr[1];
         })
         .join(';'),
     Object.entries(two)
-        .map(attr => {
+        .map((attr) => {
             return attr[0] + ':' + attr[1];
         })
         .join(';')
