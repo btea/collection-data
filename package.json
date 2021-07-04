@@ -1,7 +1,7 @@
 {
-    "name": "chrome-extension",
-    "version": "1.0.0",
-    "description": "[Chrome 插件 攻略](https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)",
+    "name": "collection-data",
+    "version": "0.0.1",
+    "description": "",
     "main": "main.js",
     "scripts": {
         "serve": "webpack --config ./webpack/webpack.dev.config.js",
@@ -52,6 +52,7 @@
         "@babel/polyfill": "^7.12.1",
         "@babel/preset-env": "^7.12.10",
         "@babel/runtime-corejs2": "^7.12.5",
+        "ajax-hook": "^2.0.3",
         "core-js": "^2.6.12",
         "vue": "^3.0.4"
     }
