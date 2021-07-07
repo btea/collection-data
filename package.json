@@ -4,7 +4,7 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-        "serve": "webpack --config ./webpack/webpack.dev.config.js",
+        "start": "webpack --config ./webpack/webpack.dev.config.js",
         "build": "webpack --config ./webpack/webpack.pro.config.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -23,7 +23,7 @@
         "@babel/generator": "^7.13.9",
         "@babel/parser": "^7.12.11",
         "@babel/template": "^7.12.7",
-        "@vue/compiler-sfc": "^3.0.4",
+        "@vue/compiler-sfc": "^3.1.4",
         "autoprefixer": "^10.1.0",
         "babel-loader": "^8.2.2",
         "babel-traverse": "^6.26.0",
