@@ -10,6 +10,13 @@ proxy({
     }
 });
 console.clear();
+// console.log(global);
+// global[0].proxy = proxy;
+
+/***
+ * 说明，此时的全局执行上下文与浏览器的执行上下文不一致，此时绑定的全局请求代理，并没有添加到
+ * 浏览器的window对象上不会生效。。。。
+ */
 
 // let script = document.createElement('script');
 // script.src = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js';
