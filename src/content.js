@@ -18,21 +18,26 @@ console.clear();
  * 浏览器的window对象上不会生效。。。。
  */
 
-// let script = document.createElement('script');
-// script.src = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js';
-// document.body.appendChild(script);
-// console.clear();
-// setTimeout(() => {
-//     var ah = window.ah;
-//     if (ah) {
-//         ah.proxy({
-//             onResponse: (response, handler) => {
-//                 console.log(response.response);
-//                 handler.next(response);
-//             }
-//         });
-//     }
-// }, 3000);
+let script = document.createElement('script');
+script.src = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js';
+document.body.appendChild(script);
+console.clear();
+setTimeout(() => {
+    let js = document.createElement('script');
+    js.className = 'logic';
+    js.innerHTML = `
+    var ah = window.ah;
+    if (ah) {
+        ah.proxy({
+            onResponse: (response, handler) => {
+                console.log(response.response);
+                handler.next(response);
+            }
+        });
+    }
+    `;
+    document.body.appendChild(js);
+}, 3000);
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request);
     if (request.value) {
@@ -69,12 +74,12 @@ const two = {
 console.log(
     '%c link %c start ',
     Object.entries(one)
-        .map((attr) => {
+        .map(attr => {
             return attr[0] + ':' + attr[1];
         })
         .join(';'),
     Object.entries(two)
-        .map((attr) => {
+        .map(attr => {
             return attr[0] + ':' + attr[1];
         })
         .join(';')
