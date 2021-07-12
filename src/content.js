@@ -10,7 +10,7 @@ let script = document.createElement('script');
 script.src = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js';
 document.body.appendChild(script);
 console.clear();
-setTimeout(() => {
+script.onload = function () {
     let js = document.createElement('script');
     js.className = 'logic';
     js.innerHTML = `
@@ -18,14 +18,15 @@ setTimeout(() => {
     if (ah) {
         ah.proxy({
             onResponse: (response, handler) => {
-                console.log(response.response);
+                console.log(response);
                 handler.next(response);
             }
         });
     }
     `;
     document.body.appendChild(js);
-}, 3000);
+};
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request);
     if (request.value) {
