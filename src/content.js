@@ -1,17 +1,5 @@
 // import './css/content.css';
-import { proxy } from 'ajax-hook';
-proxy({
-    onError: (err, handler) => {
-        console.log(err);
-    },
-    onResponse: (response, handler) => {
-        console.log(response.response);
-        handler.next(response);
-    }
-});
 console.clear();
-// console.log(global);
-// global[0].proxy = proxy;
 
 /***
  * 说明，此时的全局执行上下文与浏览器的执行上下文不一致，此时绑定的全局请求代理，并没有添加到
